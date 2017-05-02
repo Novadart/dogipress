@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+
+  wp-db:
+    image: mariadb:10.1
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
+    ports:
+      - "8081:3306"
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: wordpress
+
+  wp-wordpress:
+    build: .
+    volumes:
+      - ./wordpress:/var/www/html
+#      - ${WP_UPLOADS_DIR}:/var/www/html/wp-content/uploads
+    ports:
+      - "8080:80"
+    depends_on:
+      - wp-db
+    links:
+      - wp-db:mysql
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: wordpress
