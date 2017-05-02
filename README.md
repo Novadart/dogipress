@@ -19,9 +19,9 @@ It's very much work in progress, if you have suggestions we encourage you to con
        
       * create a file `local.env` using `local.env.template` as template and modify it to point to the directory where you keep the `wp-content/uploads` files
       * open `docker-compose.yml` and uncomment the line
-          ```yml
-          - ${WP_UPLOADS_DIR}:/var/www/html/wp-content/uploads
-          ```
+        ```
+        - ${WP_UPLOADS_DIR}:/var/www/html/wp-content/uploads
+        ```
         this way during development the files will be sourced from that directory
       * add `db/` to `.gitignore`
           
