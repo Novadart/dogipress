@@ -6,10 +6,10 @@ RUN docker-php-ext-install zip
 # in config/php.ini go custom PHP configurations.  See https://store.docker.com/images/php?tab=description
 COPY config/php.ini /usr/local/etc/php/
 
-COPY ./wordpress /var/www/html
+# The content of wp-content/uploads is saved in a volume.
+VOLUME /var/www/html/wp-content/uploads
 
-# Uncomment this if you are running the image standalone and wish the content of wp-content/uploads to be persisted
-#VOLUME /var/www/html/wp-content/uploads
+COPY ./wordpress /var/www/html
 
 # Fix the permissions of the wordpress files - see http://stackoverflow.com/questions/18352682/correct-file-permissions-for-wordpress
 WORKDIR /var/www/html
