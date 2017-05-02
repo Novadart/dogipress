@@ -90,5 +90,5 @@ in the directory you defined in `local.env`
     
 3. Deploy it using either a custom `docker-compose.yml` or by manually running `docker run`.
 
-**NOTE:** If you're using docker for the DB too don't forget to set a volume for your database or you'll lose all of 
-your data whenever you reboot the instance.
+**NOTE:** unless your site is static and using an external DB, you will need to set the volumes for your uploads folder and 
+the database data.
