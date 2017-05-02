@@ -1,7 +1,15 @@
-# *DOGIPRESS* by Novadart
+# *DOGIPRESS*
 This project has the goal to make it easier to use develop and deploy Wordpress projects while using Docker and Git.
 
 It's very much work in progress, if you have suggestions we encourage you to contribute with a PR.
+
+## Requirements
+This project was tested on a Linux environment. The following tools are required:
+
+* Docker CE (latest)
+* Docker Compose (latest)
+* mysqldump
+
 
 ## Quick Setup
 
@@ -59,8 +67,7 @@ in the directory you defined in `local.env`
   ```
 5. Commit and push changes to your git repo
 
-**NOTE:** if you chose not to save the DB and/or the uploads directory content on GIT, you should save them manually too 
-because yoir Wordpress site won't work if they are not available
+**NOTE:** if you chose not to save the DB and/or the uploads directory content on GIT, remember to save them manually somewhere.
 
 
 ## Deployment Phase
