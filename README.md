@@ -38,18 +38,21 @@ It's very much work in progress, if you have suggestions we encourage you to con
 
 
 ## Development Phase
-1. Execute:
+1. [OPTIONAL] If you are working on an existing website you will need to place a copy of the DB in `./db` (make sure that 
+the directory contains only 1 SQL file, since MariaDB will execute all of them) and place the content of `wp-content/uploads`
+in the directory you defined in `local.env`
+2. Execute:
   ```
   ./start.sh
   ```
-2. Make changes to your Wordpress site
-3. Execute:
+3. Make changes to your Wordpress site
+4. Execute:
   ```
   ./stop.sh
   ```
-4. Commit and push changes to your git repo
+5. Commit and push changes to your git repo
 
-**NOTE:** if you chose not to save the DB and/or the uploads direcotry content on GIT, you should save them manually too because yoir Wordpress site won't work if they are not available
+**NOTE:** if you chose not to save the DB and/or the uploads directory content on GIT, you should save them manually too because yoir Wordpress site won't work if they are not available
 
 
 ## Deployment Phase
@@ -65,7 +68,7 @@ It's very much work in progress, if you have suggestions we encourage you to con
 
     ```
     * Upload it to the server via FTP
-    * on the server load it
+    * Log-in on the deployment server and load the image
     ```
     docker load -i my-website-1.2.3.tar
     ```
