@@ -17,7 +17,8 @@ It's very much work in progress, if you have suggestions we encourage you to con
     
     B. If you plan to **NOT** save the database and/or the uploads files in git you need to:
        
-      * create a file `local.env` using `local.env.template` as template and modify it to point to the directory where you keep the `wp-content/uploads` files
+      * create a file `local.env` using `local.env.template` as template and modify it to point to the directory where 
+      you keep the `wp-content/uploads` files
       * open `docker-compose.yml` and uncomment the line
         ```
         - ${WP_UPLOADS_DIR}:/var/www/html/wp-content/uploads
@@ -25,14 +26,20 @@ It's very much work in progress, if you have suggestions we encourage you to con
         this way during development the files will be sourced from that directory
       * add `db/` to `.gitignore`
           
-    **NOTE:** you can add custom php options in `config/php.ini`. You might need to install custom php extensions, to do so check Dockerfile and the official PHP docker image docs https://store.docker.com/images/php?tab=description 
+    **NOTE:** you can add custom php options in `config/php.ini`. You might need to install custom php extensions, to do 
+    so check Dockerfile and the official PHP docker image docs https://store.docker.com/images/php?tab=description 
 
-4. [**Only once**] Generate the wordpress files by opening a console and running:
+4. [**Only once**] Generate the wordpress files by opening a console and running (it will ask you the password):
     ```
-    $ ./start.sh && ./stop.sh && ./start.sh && ./stop.sh
+    $ ./start.sh
     ```
+    Open another console and run:
+    ```
+    $ ./stop.sh
+    ```
+    Then repeat start/stop again, to make sure that the permissions are correctly set.
+    
     This will create the files, save a copy of the db and fix permissions to your user.
-    It will ask you the password (runs sudo in `./start.sh`)
     
 5. Commit and push the stub of your website to your repo
 
@@ -52,7 +59,8 @@ in the directory you defined in `local.env`
   ```
 5. Commit and push changes to your git repo
 
-**NOTE:** if you chose not to save the DB and/or the uploads directory content on GIT, you should save them manually too because yoir Wordpress site won't work if they are not available
+**NOTE:** if you chose not to save the DB and/or the uploads directory content on GIT, you should save them manually too 
+because yoir Wordpress site won't work if they are not available
 
 
 ## Deployment Phase
@@ -75,4 +83,5 @@ in the directory you defined in `local.env`
     
 3. Deploy it using either a custom `docker-compose.yml` or by manually running `docker run`.
 
-**NOTE:** If you're using docker for the DB too don't forget to set a volume for your database or you'll lose all of your data whenever you reboot the instance.
+**NOTE:** If you're using docker for the DB too don't forget to set a volume for your database or you'll lose all of 
+your data whenever you reboot the instance.
