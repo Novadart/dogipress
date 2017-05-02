@@ -10,4 +10,4 @@ find . -type d -exec chmod 777 {} \;
 find . -type f -exec chmod 666 {} \;
 cd ..
 
-docker-compose up
+docker-compose up --build
